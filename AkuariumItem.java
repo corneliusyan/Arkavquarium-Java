@@ -1,3 +1,4 @@
+import java.lang.Math;
 public abstract class AkuariumItem {
     /*! \brief AkuariumItem x-coordinate.*/
     protected float x;
