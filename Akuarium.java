@@ -3,10 +3,10 @@ import java.lang.Math;
 
 public class Akuarium{
 	/*! \brief Akuarium width size.*/
-	private double maxX;
+	private float maxX;
 
 	/*! \brief Akuarium height size.*/
-	private double maxY;
+	private float maxY;
 
 	/*! \brief Akuarium game time.*/
 	private int gameTime;
@@ -43,20 +43,20 @@ public class Akuarium{
 		siput = new Siput(maxX/2, maxY, this);
 		Random rand = new Random();
 		for (int i = 0; i < initialNumberOfGuppy; i++) {
-			double rand_x = rand.nextInt((int)maxX)*1.0;
-			double rand_y = rand.nextInt((int)maxY)*1.0;
+			float rand_x = (float) (rand.nextInt((int)maxX)*1.0);
+			float rand_y = (float) (rand.nextInt((int)maxY)*1.0);
 			Ikan gup = new Guppy(rand_x, rand_y, this);
 			IkanList.add(gup);
 		}
 	}
 
 	/*! \brief Return Akuarium width size.*/
-	public double getMaxX() {
+	public float getMaxX() {
 		return maxX;
 	}
 
 	/*! \brief Return Akuarium height size.*/
-	public double getMaxY() {
+	public float getMaxY() {
 		return maxY;
 	}
 
@@ -99,12 +99,12 @@ public class Akuarium{
 	}
 
 	/*! \brief Set Akuarium width size.*/
-	public void setMaxX(double x){
+	public void setMaxX(float x){
 		maxX = x;
 	}
 
 	/*! \brief Set Akuarium height size.*/
-	public void setMaxY(double y){
+	public void setMaxY(float y){
 		maxY = y;
 	}
 
@@ -166,7 +166,7 @@ public class Akuarium{
 	 * Return true if player click on a coin.
 	 * Return false if playeer didn't click a coin.
 	 */
-	public boolean AmbilKoin(double x, double y) {
+	public boolean AmbilKoin(float x, float y) {
 		int i=0;
 		while (i < KoinList.getSize()) {
 			if (Math.sqrt(Math.pow(x - KoinList.get(i).getX(), 2) + Math.pow(y - KoinList.get(i).getY(), 2)) <= 1) {
@@ -190,8 +190,8 @@ public class Akuarium{
 		if (koin >= 50){
 			koin -= 50;
 			Random rand = new Random();
-			double rand_x = (rand.nextInt((int)maxX))*1.0;
-			double rand_y = (rand.nextInt((int)maxY))*1.0;
+			float rand_x = (float) (rand.nextInt((int)maxX)*1.0);
+			float rand_y = (float) (rand.nextInt((int)maxY)*1.0);
 			Ikan gup = new Guppy(rand_x, rand_y, this);
 			IkanList.add(gup);
 			return true;
@@ -208,7 +208,7 @@ public class Akuarium{
 		if (koin >= 100){
 			koin -= 100;
 			Random rand = new Random();
-			Piranha pir = new Piranha(rand.nextInt((int)maxX)*1.0, rand.nextInt((int)maxY)*1.0, this);
+			Piranha pir = new Piranha((float) (rand.nextInt((int)maxX)*1.0), (float) (rand.nextInt((int)maxY)*1.0), this);
 			IkanList.add(pir);
 			return true;
 		}
@@ -234,7 +234,7 @@ public class Akuarium{
 	 * Return true if player has enough coin for buy a fish food.
 	 * Return false if player doesn't have enough coin for buy a fish food.
 	 */
-	public boolean BeliMakanan(double x, double y){
+	public boolean BeliMakanan(float x, float y){
 		if (koin >= 5){
 			koin -=5;
 			MakananIkan makanBang = new MakananIkan(x, y, this);

@@ -11,7 +11,7 @@ class Guppy extends Ikan {
     }
 
     /*! \brief Guppy Constructor.*/
-    public Guppy(double x, double y, Akuarium A) {
+    public Guppy(float x, float y, Akuarium A) {
         super(x, y, A, TIPE_IKAN_GUPPY);
         tahapPertumbuhan = 1;
         jumlahMakananUntukPertumbuhan = 2;
@@ -46,7 +46,7 @@ class Guppy extends Ikan {
      */
     @Override
     public void Makan() {
-        double terdekat = 99999;
+        float terdekat = 99999;
         int idxMin = 0;
         for (int i = 0; i < A.getMakananIkanList().getSize(); i++) {
             if (jarak(this, (A.getMakananIkanList().get(i))) <= terdekat) {

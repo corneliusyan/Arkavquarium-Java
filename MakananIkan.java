@@ -8,7 +8,7 @@ public class MakananIkan extends AkuariumItem implements MovingItem {
 	 *
 	 * The parameter is x-coordinate, y-coordinate, and pointer to Akuarium respectively.
 	 */
-	public MakananIkan(double x, double y, Akuarium A) {
+	public MakananIkan(float x, float y, Akuarium A) {
 		super(x, y, A);
 	}
 

@@ -10,7 +10,7 @@ public class Koin extends AkuariumItem implements MovingItem {
 	*
 	* The parameter is x-coordinate, y-coordinate, Pointer to Akuarium, and Koin value.
 	*/
-	public Koin(double x, double y, Akuarium A, int n) {
+	public Koin(float x, float y, Akuarium A, int n) {
 		super(x, y, A);
 		this.nilai = n;
 	}
