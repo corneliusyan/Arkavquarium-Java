@@ -11,7 +11,7 @@ class Piranha extends Ikan {
      *
      * The parameters are x-coordinate, y-coordinate, and pointer to Akuarium respectively.
      */
-    public Piranha(float x, float y, Akuarium A) {
+    public Piranha(double x, double y, Akuarium A) {
         super(x, y, A, TIPE_IKAN_PIRANHA);
         waktuCounter = 0;
         tahapIkanDimakan = 0;
@@ -24,7 +24,7 @@ class Piranha extends Ikan {
      */
     @Override
     public void Makan() {
-        float terdekat = 99999;
+        double terdekat = 99999;
         int idxMin = -1;
         int i = 0;
         while (i < A.getIkanList().getSize())

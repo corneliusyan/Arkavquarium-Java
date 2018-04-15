@@ -13,7 +13,7 @@ public class Siput extends AkuariumItem implements MovingItem {
 	 *
 	 * The parameters are x-coordinate, y-coordinate, and pointer to Akuarium respectively.
 	 */
-	public Siput(float x, float y, Akuarium A) {
+	public Siput(double x, double y, Akuarium A) {
 		super(x, y, A);
 		this.hadapKanan = true;
 	}
@@ -33,7 +33,7 @@ public class Siput extends AkuariumItem implements MovingItem {
 	}
 
 	/*! \brief Set Siput position on Akuarium.*/
-	public void setSiput(float x, float y, Akuarium A) {
+	public void setSiput(double x, double y, Akuarium A) {
 		this.x = x;
 		this.y = y;
 		this.A = A;
@@ -45,13 +45,13 @@ public class Siput extends AkuariumItem implements MovingItem {
 	 * Siput will move to the nearest Koin based-on euclidean-distance Siput with Koin.
 	 */
 	public void Gerak() {
-		float minX = 99999;
-		float minY = -999999;
-		float dist = (float) Math.sqrt(Math.pow(minX - x, 2) + Math.pow(minY - y, 2));
+		double minX = 99999;
+		double minY = -999999;
+		double dist = (double) Math.sqrt(Math.pow(minX - x, 2) + Math.pow(minY - y, 2));
 		int i = 0;
 		// LinkedList<Koin*> K = A.getKoinList();
 		while (i < A.getKoinList().getSize()) {
-			float kdist = (float) jarak(this, (A.getKoinList().get(i)));
+			double kdist = (double) jarak(this, (A.getKoinList().get(i)));
 			if (kdist < dist) {
 				minX = A.getKoinList().get(i).getX();
 				;

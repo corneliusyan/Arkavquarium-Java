@@ -10,7 +10,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
     protected boolean hadapKanan;
 
     /*! \brief Minimum food radius to be eaten */
-    protected float radiusMakan;
+    protected double radiusMakan;
 
     /*! \brief Time value for Fish to move randomly */
     protected int waktuBebas;
@@ -31,14 +31,14 @@ public class Ikan extends AkuariumItem implements MovingItem {
     protected int moveDuration;
 
     /*! \brief the amount of location changes in 1 fps*/
-    protected float xt, yt;
+    protected double xt, yt;
 
     /*! \brief Default Constructor without parameter */
     public Ikan() {
     }
 
     /*! \brief Fish Constructor with 3 parameters*/
-    public Ikan(float x, float y, Akuarium A, String tipe) {
+    public Ikan(double x, double y, Akuarium A, String tipe) {
         super(x,y,A);
         this.tipe = tipe;
         radiusMakan = 1;
@@ -62,7 +62,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
     }
 
     /*! \brief return Minimum radius of food to be eaten*/
-    public float getRadiusMakan() {
+    public double getRadiusMakan() {
         return radiusMakan;
     }
 
@@ -97,7 +97,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
     }
 
     /*! \brief set Minimum radius of food to be eaten */
-    public void setRadiusMakan(float val) {
+    public void setRadiusMakan(double val) {
         radiusMakan = val;
     }
 
@@ -132,16 +132,16 @@ public class Ikan extends AkuariumItem implements MovingItem {
      */
 
     public void Gerak() {
-        float x2, y2, alfa, deg;
+        double x2, y2, alfa, deg;
         if (waktuBebas > 0) {
             boolean isValid = ((x + xt <= (A.getMaxX())) && (x + xt >= 0) && (y + yt <= (A.getMaxY()))
                     && (y + yt >= 0));
             if (moveDuration == 0 || !isValid) {
                 do {
-                    deg = (float) Math.random() * 360;
-                    alfa = (float) (deg * Math.PI / 180);
-                    x2 = (float) (0.1 * Math.cos(alfa));
-                    y2 = (float) (0.1 * Math.sin(alfa));
+                    deg = (double) Math.random() * 360;
+                    alfa = (double) (deg * Math.PI / 180);
+                    x2 = (double) (0.1 * Math.cos(alfa));
+                    y2 = (double) (0.1 * Math.sin(alfa));
                 } while (!((x + x2 <= (A.getMaxX())) && (x + x2 >= 0) && (y + y2 <= (A.getMaxY())) && (y + y2 >= 0)));
                 moveDuration = 20;
             } else {
@@ -151,7 +151,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
             }
         } else {
             if (tipe == TIPE_IKAN_GUPPY) {
-                float terdekat = 99999;
+                double terdekat = 99999;
                 int idxMin = -1;
                 if (A.getMakananIkanList().getSize() != 0) {
                     for (int i = 0; i < A.getMakananIkanList().getSize(); i++) {
@@ -162,12 +162,12 @@ public class Ikan extends AkuariumItem implements MovingItem {
                                 break;
                         }
                     }
-                    float xx, yy;
-                    xx = (float) (A.getMakananIkanList().get(idxMin).getX() - this.x);
-                    yy = (float) (A.getMakananIkanList().get(idxMin).getY() - this.y);
-                    alfa = (float) Math.atan2(yy, xx);
-                    x2 = (float) (0.1 * Math.cos(alfa));
-                    y2 = (float) (0.1 * Math.sin(alfa));
+                    double xx, yy;
+                    xx = (double) (A.getMakananIkanList().get(idxMin).getX() - this.x);
+                    yy = (double) (A.getMakananIkanList().get(idxMin).getY() - this.y);
+                    alfa = (double) Math.atan2(yy, xx);
+                    x2 = (double) (0.1 * Math.cos(alfa));
+                    y2 = (double) (0.1 * Math.sin(alfa));
                     if (terdekat <= radiusMakan) {
                         makanSekarang = true;
                     }
@@ -176,10 +176,10 @@ public class Ikan extends AkuariumItem implements MovingItem {
                             && (y + yt >= 0));
                     if (moveDuration == 0 || !isValid) {
                         do {
-                            deg = (float) Math.random() * 360;
-                            alfa = (float) (deg * Math.PI / 180);
-                            x2 = (float) (0.1 * Math.cos(alfa));
-                            y2 = (float) (0.1 * Math.sin(alfa));
+                            deg = (double) Math.random() * 360;
+                            alfa = (double) (deg * Math.PI / 180);
+                            x2 = (double) (0.1 * Math.cos(alfa));
+                            y2 = (double) (0.1 * Math.sin(alfa));
                         } while (!((x + x2 <= (A.getMaxX())) && (x + x2 >= 0) && (y + y2 <= (A.getMaxY()))
                                 && (y + y2 >= 0)));
                         moveDuration = 20;
@@ -190,7 +190,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
                     }
                 }
             } else {
-                float terdekat = 99999;
+                double terdekat = 99999;
                 int idxMin = -1, i = 0;
                 while (i < A.getIkanList().getSize()) {
                     if (AkuariumItem.jarak(this, (A.getIkanList().get(i))) <= terdekat
@@ -207,10 +207,10 @@ public class Ikan extends AkuariumItem implements MovingItem {
                             && (y + yt >= 0));
                     if (moveDuration == 0 || !isValid) {
                         do {
-                            deg = (float) Math.random() * 360;
-                            alfa = (float) (deg * Math.PI / 180);
-                            x2 = (float) (0.1 * Math.cos(alfa));
-                            y2 = (float) (0.1 * Math.sin(alfa));
+                            deg = (double) Math.random() * 360;
+                            alfa = (double) (deg * Math.PI / 180);
+                            x2 = (double) (0.1 * Math.cos(alfa));
+                            y2 = (double) (0.1 * Math.sin(alfa));
                         } while (!((x + x2 <= (A.getMaxX())) && (x + x2 >= 0) && (y + y2 <= (A.getMaxY()))
                                 && (y + y2 >= 0)));
                         moveDuration = 20;
@@ -220,12 +220,12 @@ public class Ikan extends AkuariumItem implements MovingItem {
                         moveDuration--;
                     }
                 } else {
-                    float xx, yy;
-                    xx = (float) (A.getIkanList().get(idxMin).getX() - this.x);
-                    yy = (float) (A.getIkanList().get(idxMin).getY() - this.y);
-                    alfa = (float) Math.atan2(yy, xx);
-                    x2 = (float) (0.1 * Math.cos(alfa));
-                    y2 = (float) (0.1 * Math.sin(alfa));
+                    double xx, yy;
+                    xx = (double) (A.getIkanList().get(idxMin).getX() - this.x);
+                    yy = (double) (A.getIkanList().get(idxMin).getY() - this.y);
+                    alfa = (double) Math.atan2(yy, xx);
+                    x2 = (double) (0.1 * Math.cos(alfa));
+                    y2 = (double) (0.1 * Math.sin(alfa));
                     if (terdekat <= radiusMakan) {
                         makanSekarang = true;
                     }
