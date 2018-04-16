@@ -35,6 +35,9 @@ public class Akuarium{
 
 	/*! \brief Akuarium Default Constructor.*/
 	public Akuarium(){
+		KoinList = new LinkedList<Koin>();
+		MakananIkanList = new LinkedList<MakananIkan>();
+		IkanList = new LinkedList<Ikan>();
 		maxX = 30;
 		maxY = 15;
 		initialNumberOfGuppy = 2;
