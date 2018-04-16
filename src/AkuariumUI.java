@@ -14,6 +14,7 @@ import javax.swing.Timer;
 
 import static java.awt.event.KeyEvent.VK_G;
 import static java.awt.event.KeyEvent.VK_P;
+import static java.awt.event.KeyEvent.VK_T;
 
 public class AkuariumUI extends JPanel implements ActionListener {
     private final int SCREEN_WIDTH = 640;
@@ -32,6 +33,8 @@ public class AkuariumUI extends JPanel implements ActionListener {
     private Image piranhaLR[];
 //    private Image guppyR[];
     private Image background;
+    private Image winBG;
+    private Image loseBG;
     private Image pellet;
     private Image koin;
     private Image siput;
@@ -77,6 +80,10 @@ public class AkuariumUI extends JPanel implements ActionListener {
         koin = koi.getImage();
         ImageIcon sip = new ImageIcon(getClass().getResource("img/Siput-kiri.png"));
         siput = sip.getImage();
+        ImageIcon win = new ImageIcon(getClass().getResource("img/win.png"));
+        winBG = win.getImage();
+        ImageIcon lose = new ImageIcon(getClass().getResource("img/lose.png"));
+        loseBG = lose.getImage();
 //        guppyR = new Image[12];
 //        for (int i = 1; i<= 10;i++)
 //        {
@@ -103,11 +110,22 @@ public class AkuariumUI extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        createDrawing(g);
+        if (arkavquarium.getTelur() >= 3)
+        {
+            g.drawImage(winBG, 0, 0, getWidth(), getHeight(), this);
+        }
+        else if (arkavquarium.getIkanList().getSize()==0 && arkavquarium.getKoin()<50)
+        {
+            g.drawImage(loseBG, 0, 0, getWidth(), getHeight(), this);
+        }
+        else
+        {
+            createDrawing(g);
+        }
     }
+
     private void createDrawing(Graphics g) {
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-//        g.drawImage(gup, x, y, null);
         int fontSize = 20;
 
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
@@ -115,6 +133,7 @@ public class AkuariumUI extends JPanel implements ActionListener {
         g.setColor(Color.red);
 
         g.drawString("Player's Coin : " + arkavquarium.getKoin(), SCREEN_WIDTH - 100, 20);
+        g.drawString("Player's Egg : " + arkavquarium.getTelur(), SCREEN_WIDTH - 100, 40);
         for (int i=0; i< arkavquarium.getIkanList().getSize();i++)
         {
             Ikan cur = arkavquarium.getIkanList().get(i);
@@ -181,6 +200,10 @@ public class AkuariumUI extends JPanel implements ActionListener {
             if (key == VK_P)
             {
                 arkavquarium.BeliPiranha();
+            }
+            if (key == VK_T)
+            {
+                arkavquarium.BeliTelur();
             }
         }
     }
