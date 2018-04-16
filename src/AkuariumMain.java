@@ -2,8 +2,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 public class AkuariumMain extends JFrame {
     public AkuariumMain() {
-        add(new AkuariumUI());
-        setSize(640, 480);
+        getContentPane().add(new AkuariumUI());
+//        setSize(640, 480);
+        setResizable(false);
         pack();
 
         setTitle("ArkavQuarium");
