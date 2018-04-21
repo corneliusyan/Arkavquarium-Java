@@ -33,11 +33,11 @@ public class Siput extends AkuariumItem implements MovingItem {
 	}
 
 	/*! \brief Set Siput position on Akuarium.*/
-	public void setSiput(float x, float y, Akuarium A) {
-		this.x = x;
-		this.y = y;
-		this.A = A;
-	}
+//	public void setSiput(float x, float y, Akuarium A) {
+//		this.x = x;
+//		this.y = y;
+//		this.A = A;
+//	}
 
 	/*! \brief Method for Siput to move.
 	 *

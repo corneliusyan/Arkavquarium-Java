@@ -64,7 +64,7 @@ class Guppy extends Ikan {
         if (this.tahapPertumbuhan == 1) {
             this.jumlahMakananUntukPertumbuhan--;
             if (this.jumlahMakananUntukPertumbuhan == 0) {
-                this.jumlahMakananUntukPertumbuhan = 4;
+                this.jumlahMakananUntukPertumbuhan = 3;
                 this.tahapPertumbuhan++;
             }
         } else if (this.tahapPertumbuhan == 2) {

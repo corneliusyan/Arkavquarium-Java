@@ -2,6 +2,9 @@ import java.util.Random;
 import java.lang.Math;
 
 public class Akuarium{
+	private static final float MAX_X = 30;
+    private static final float MAX_Y = 15;
+
 	/*! \brief Akuarium width size.*/
 	private float maxX;
 
@@ -9,7 +12,7 @@ public class Akuarium{
 	private float maxY;
 
 	/*! \brief Akuarium game time.*/
-	private int gameTime;
+//	private int gameTime;
 
 	/*! \brief Player's Coin.*/
 	private int koin;
@@ -38,8 +41,8 @@ public class Akuarium{
 		KoinList = new LinkedList<Koin>();
 		MakananIkanList = new LinkedList<MakananIkan>();
 		IkanList = new LinkedList<Ikan>();
-		maxX = 30;
-		maxY = 15;
+		maxX = MAX_X;
+		maxY = MAX_Y;
 		initialNumberOfGuppy = 2;
 		koin = 10000;
 		telur = 0;
@@ -64,9 +67,9 @@ public class Akuarium{
 	}
 
 	/*! \brief Return player's coin.*/
-	public int getGameTime() {
-		return gameTime;
-	}
+//	public int getGameTime() {
+//		return gameTime;
+//	}
 
 	/*! \brief Return game time.*/
 	public int getInitialNumberOfGuppy() {
@@ -112,9 +115,9 @@ public class Akuarium{
 	}
 
 	/*! \brief Set current Game Time.*/
-	public void setGameTime(int g){
-		gameTime = g;
-	}
+//	public void setGameTime(int g){
+//		gameTime = g;
+//	}
 
 	/*! \brief Set default number of guppy.*/
 	public void setInitialNumberOfGuppy(int i){
@@ -133,7 +136,7 @@ public class Akuarium{
 
 	/*! \brief Run the game process on unit of time.*/
 	public void ProsesWaktu() {
-		gameTime++;
+//		gameTime++;
 		int i = 0;
 		while (i < KoinList.getSize()) {
 			KoinList.get(i).ProsesWaktu();

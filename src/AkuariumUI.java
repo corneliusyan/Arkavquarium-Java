@@ -19,9 +19,6 @@ import static java.awt.event.KeyEvent.VK_T;
 public class AkuariumUI extends JPanel implements ActionListener {
     private final int SCREEN_WIDTH = 640;
     private final int SCREEN_HEIGHT = 480;
-    private final int DOT_SIZE = 10;
-    private final int ALL_DOTS = 900;
-    private final int RAND_POS = 29;
     private final int DELAY = 140;
     private Timer timer;
     private int x=0;
@@ -37,8 +34,7 @@ public class AkuariumUI extends JPanel implements ActionListener {
     private Image loseBG;
     private Image pellet;
     private Image koin;
-    private Image siput;
-    private JLabel ShowKoin;
+    private Image siputLR[];
     private Akuarium arkavquarium;
     public AkuariumUI() {
         addKeyListener(new TAdapter());
@@ -54,36 +50,55 @@ public class AkuariumUI extends JPanel implements ActionListener {
     {
         ImageIcon bgi = new ImageIcon(getClass().getResource("img/tank1.png"));
         background = bgi.getImage();
-        ImageIcon gupL1 = new ImageIcon(getClass().getResource("img/Guppy-1-Kiri.png"));
-        ImageIcon gupR1 = new ImageIcon(getClass().getResource("img/Guppy-1-Kanan.png"));
-        guppy1LR = new Image[3];
-        guppy1LR[0] = gupL1.getImage();
-        guppy1LR[1] = gupR1.getImage();
-        ImageIcon gupL2 = new ImageIcon(getClass().getResource("img/Guppy-2-Kiri.png"));
-        ImageIcon gupR2 = new ImageIcon(getClass().getResource("img/Guppy-2-Kanan.png"));
-        guppy2LR = new Image[3];
-        guppy2LR[0] = gupL2.getImage();
-        guppy2LR[1] = gupR2.getImage();
-        ImageIcon gupL3 = new ImageIcon(getClass().getResource("img/Guppy-3-Kiri.png"));
-        ImageIcon gupR3 = new ImageIcon(getClass().getResource("img/Guppy-3-Kanan.png"));
-        guppy3LR = new Image[3];
-        guppy3LR[0] = gupL3.getImage();
-        guppy3LR[1] = gupR3.getImage();
-        ImageIcon pirL = new ImageIcon(getClass().getResource("img/Piranha-Kiri.png"));
-        ImageIcon pirR = new ImageIcon(getClass().getResource("img/Piranha-Kanan.png"));
-        piranhaLR = new Image[3];
-        piranhaLR[0] = pirL.getImage();
-        piranhaLR[1] = pirR.getImage();
-        ImageIcon pel = new ImageIcon(getClass().getResource("img/MakananIkan.png"));
-        pellet = pel.getImage();
-        ImageIcon koi = new ImageIcon(getClass().getResource("img/Koin.png"));
-        koin = koi.getImage();
-        ImageIcon sip = new ImageIcon(getClass().getResource("img/Siput-kiri.png"));
-        siput = sip.getImage();
         ImageIcon win = new ImageIcon(getClass().getResource("img/win.png"));
         winBG = win.getImage();
         ImageIcon lose = new ImageIcon(getClass().getResource("img/lose.png"));
         loseBG = lose.getImage();
+        ImageIcon gupL1 = new ImageIcon(getClass().getResource("img/Guppy-1-Kiri.png"));
+        ImageIcon gupR1 = new ImageIcon(getClass().getResource("img/Guppy-1-Kanan.png"));
+        ImageIcon gupHL1 = new ImageIcon(getClass().getResource("img/Guppy-1-H-Kiri.png"));
+        ImageIcon gupHR1 = new ImageIcon(getClass().getResource("img/Guppy-1-H-Kanan.png"));
+        guppy1LR = new Image[5];
+        guppy1LR[0] = gupL1.getImage();
+        guppy1LR[1] = gupR1.getImage();
+        guppy1LR[2] = gupHL1.getImage();
+        guppy1LR[3] = gupHR1.getImage();
+        ImageIcon gupL2 = new ImageIcon(getClass().getResource("img/Guppy-2-Kiri.png"));
+        ImageIcon gupR2 = new ImageIcon(getClass().getResource("img/Guppy-2-Kanan.png"));
+        ImageIcon gupHL2 = new ImageIcon(getClass().getResource("img/Guppy-2-H-Kiri.png"));
+        ImageIcon gupHR2 = new ImageIcon(getClass().getResource("img/Guppy-2-H-Kanan.png"));
+        guppy2LR = new Image[5];
+        guppy2LR[0] = gupL2.getImage();
+        guppy2LR[1] = gupR2.getImage();
+        guppy2LR[2] = gupHL2.getImage();
+        guppy2LR[3] = gupHR2.getImage();
+        ImageIcon gupL3 = new ImageIcon(getClass().getResource("img/Guppy-3-Kiri.png"));
+        ImageIcon gupR3 = new ImageIcon(getClass().getResource("img/Guppy-3-Kanan.png"));
+        ImageIcon gupLH3 = new ImageIcon(getClass().getResource("img/Guppy-3-H-Kiri.png"));
+        ImageIcon gupRH3 = new ImageIcon(getClass().getResource("img/Guppy-3-H-Kanan.png"));
+        guppy3LR = new Image[5];
+        guppy3LR[0] = gupL3.getImage();
+        guppy3LR[1] = gupR3.getImage();
+        guppy3LR[2] = gupLH3.getImage();
+        guppy3LR[3] = gupRH3.getImage();
+        ImageIcon pirL = new ImageIcon(getClass().getResource("img/Piranha-Kiri.png"));
+        ImageIcon pirR = new ImageIcon(getClass().getResource("img/Piranha-Kanan.png"));
+        ImageIcon pirHL = new ImageIcon(getClass().getResource("img/Piranha-H-Kiri.png"));
+        ImageIcon pirHR = new ImageIcon(getClass().getResource("img/Piranha-H-Kanan.png"));
+        piranhaLR = new Image[5];
+        piranhaLR[0] = pirL.getImage();
+        piranhaLR[1] = pirR.getImage();
+        piranhaLR[2] = pirHL.getImage();
+        piranhaLR[3] = pirHR.getImage();
+        ImageIcon pel = new ImageIcon(getClass().getResource("img/MakananIkan.png"));
+        pellet = pel.getImage();
+        ImageIcon koi = new ImageIcon(getClass().getResource("img/Koin.png"));
+        koin = koi.getImage();
+        ImageIcon sipL = new ImageIcon(getClass().getResource("img/Siput-kiri.png"));
+        ImageIcon sipR = new ImageIcon(getClass().getResource("img/Siput-kanan.png"));
+        siputLR = new Image[3];
+        siputLR[0] = sipL.getImage();
+        siputLR[1] = sipR.getImage();
 //        guppyR = new Image[12];
 //        for (int i = 1; i<= 10;i++)
 //        {
@@ -93,7 +108,7 @@ public class AkuariumUI extends JPanel implements ActionListener {
     }
     public void initGame()
     {
-        timer = new Timer(100, this);
+        timer = new Timer(50, this);
         timer.start();
     }
     public void move()
@@ -109,12 +124,13 @@ public class AkuariumUI extends JPanel implements ActionListener {
     //Repaint bakal manggil 2 fungsi dibawah ini
     @Override
     public void paintComponent(Graphics g) {
+
         super.paintComponent(g);
         if (arkavquarium.getTelur() >= 3)
         {
             g.drawImage(winBG, 0, 0, getWidth(), getHeight(), this);
         }
-        else if (arkavquarium.getIkanList().getSize()==0 && arkavquarium.getKoin()<50)
+        else if (arkavquarium.getIkanList().getSize() == 0 && arkavquarium.getKoin() < 50)
         {
             g.drawImage(loseBG, 0, 0, getWidth(), getHeight(), this);
         }
@@ -123,9 +139,9 @@ public class AkuariumUI extends JPanel implements ActionListener {
             createDrawing(g);
         }
     }
-
     private void createDrawing(Graphics g) {
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+//        g.drawImage(gup, x, y, null);
         int fontSize = 20;
 
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
@@ -133,7 +149,7 @@ public class AkuariumUI extends JPanel implements ActionListener {
         g.setColor(Color.red);
 
         g.drawString("Player's Coin : " + arkavquarium.getKoin(), SCREEN_WIDTH - 100, 20);
-        g.drawString("Player's Egg : " + arkavquarium.getTelur(), SCREEN_WIDTH - 100, 40);
+        g.drawString("Player's Egg  : " + arkavquarium.getTelur(), SCREEN_WIDTH - 100, 40);
         for (int i=0; i< arkavquarium.getIkanList().getSize();i++)
         {
             Ikan cur = arkavquarium.getIkanList().get(i);
@@ -145,31 +161,99 @@ public class AkuariumUI extends JPanel implements ActionListener {
                 if (cur.getHadapKanan())
                 {
                     if (cur_g.getTahapPertumbuhan() == 1)
-                        g.drawImage(guppy1LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy1LR[3], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy1LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                     else if (cur_g.getTahapPertumbuhan() == 2)
-                        g.drawImage(guppy2LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy2LR[3], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy2LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                     else
-                        g.drawImage(guppy3LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy3LR[3], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy3LR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                 }
                 else
                 {
                     if (cur_g.getTahapPertumbuhan() == 1)
-                        g.drawImage(guppy1LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy1LR[2], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy1LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                     else if (cur_g.getTahapPertumbuhan() == 2)
-                        g.drawImage(guppy2LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy2LR[2], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy2LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                     else
-                        g.drawImage(guppy3LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    {
+                        if (cur_g.getWaktuBebas() == 0)
+                        {
+                            g.drawImage(guppy3LR[2], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                        else
+                        {
+                            g.drawImage(guppy3LR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                        }
+                    }
                 }
             }
             else
             {
                 if (cur.getHadapKanan())
                 {
-                    g.drawImage(piranhaLR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    if (cur.getWaktuBebas() == 0)
+                    {
+                        g.drawImage(piranhaLR[3], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    }
+                    else
+                    {
+                        g.drawImage(piranhaLR[1], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    }
                 }
                 else
                 {
-                    g.drawImage(piranhaLR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    if (cur.getWaktuBebas() == 0)
+                    {
+                        g.drawImage(piranhaLR[2], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    }
+                    else
+                    {
+                        g.drawImage(piranhaLR[0], (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
+                    }
                 }
             }
         }
@@ -185,7 +269,14 @@ public class AkuariumUI extends JPanel implements ActionListener {
             float y = arkavquarium.getKoinList().get(i).getY();
             g.drawImage(koin, (int) (SCREEN_WIDTH * x / 30), (int) (SCREEN_HEIGHT * y / 15), null);
         }
-        g.drawImage(siput, (int) (SCREEN_WIDTH * arkavquarium.getSiput().getX() / 30), (int) (SCREEN_HEIGHT * (arkavquarium.getSiput().getY()) / 15), null);
+        if (arkavquarium.getSiput().getHadapKanan())
+        {
+            g.drawImage(siputLR[1], (int) (SCREEN_WIDTH * arkavquarium.getSiput().getX() / 30), (int) (SCREEN_HEIGHT * (arkavquarium.getSiput().getY()) / 15), null);
+        }
+        else
+        {
+            g.drawImage(siputLR[0], (int) (SCREEN_WIDTH * arkavquarium.getSiput().getX() / 30), (int) (SCREEN_HEIGHT * (arkavquarium.getSiput().getY()) / 15), null);
+        }
     }
     private class TAdapter extends KeyAdapter
     {
@@ -201,7 +292,7 @@ public class AkuariumUI extends JPanel implements ActionListener {
             {
                 arkavquarium.BeliPiranha();
             }
-            if (key == VK_T)
+            if(key == VK_T)
             {
                 arkavquarium.BeliTelur();
             }

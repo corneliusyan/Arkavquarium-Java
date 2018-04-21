@@ -41,6 +41,7 @@ public class Ikan extends AkuariumItem implements MovingItem {
     public Ikan(float x, float y, Akuarium A, String tipe) {
         super(x,y,A);
         this.tipe = tipe;
+        isKenyang = true;
         radiusMakan = 1;
         waktuBebas = 100;
         waktuCariMakan = 300;
