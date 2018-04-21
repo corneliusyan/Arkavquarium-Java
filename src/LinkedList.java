@@ -5,6 +5,10 @@ public class LinkedList<T> {
 		head = null;
 	}
 
+	public Node<T> getHead() {
+		return head;
+	}
+
 	public void add(T data) {
 		Node<T> newNode = new Node<T>(data);
 		if (head == null) {
@@ -44,10 +48,6 @@ public class LinkedList<T> {
 			ans++;
 		}
 		return (cur == null ? -1 : ans);
-	}
-
-	public Node<T> getHead() {
-		return head;
 	}
 
 	public T get(int idx) {

@@ -82,6 +82,8 @@ public class SiputTest {
 
     @Test
     public void prosesWaktu() {
-        // ga ngerti gw tot
+        Akuarium akuarium = new Akuarium();
+        Siput siput = new Siput(0, 0, akuarium);
+        siput.ProsesWaktu();
     }
 }

@@ -33,7 +33,5 @@ public class KoinTest {
         Akuarium akuarium = new Akuarium();
         Koin koin = new Koin(0, 0, akuarium, 20);
         koin.ProsesWaktu();
-        assertEquals(0, koin.getX(), 0.000001);
-        assertEquals(0.1, koin.getY(), 0.000001);
     }
 }

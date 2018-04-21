@@ -17,10 +17,15 @@ public class PiranhaTest {
         Ikan guppy = new Guppy(0, 0, akuarium);
         akuarium.getIkanList().add(guppy);
 
+        assertEquals(4, akuarium.getIkanList().getSize());
+
         piranha.Makan();
 
         assertEquals(3, akuarium.getIkanList().getSize());
         assertEquals(1, akuarium.getKoinList().getSize());
+        assertEquals(200, piranha.getWaktuBebas());
+        assertEquals(200, piranha.getWaktuCariMakan());
+        assertFalse(piranha.makanSekarang);
     }
 
     @Test
@@ -47,6 +52,9 @@ public class PiranhaTest {
 
         piranha.dropKoin();
 
+        Koin droppedKoin = akuarium.getKoinList().get(akuarium.getKoinList().getSize() - 1);
+
         assertEquals(1, akuarium.getKoinList().getSize());
+        assertEquals(50*(0 + 1), droppedKoin.getNilai());
     }
 }

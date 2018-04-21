@@ -56,6 +56,9 @@ public class GuppyTest {
         guppy.Makan();
 
         assertEquals(0, akuarium.getMakananIkanList().getSize());
+        assertEquals(200, guppy.getWaktuBebas());
+        assertEquals(200, guppy.getWaktuCariMakan());
+        assertFalse(guppy.makanSekarang);
     }
 
     @Test

@@ -162,7 +162,13 @@ public class AkuariumTest {
         TestUtility testUtil = new TestUtility();
         Akuarium akuarium = testUtil.generatePopulatedAkuarium();
 
+        int koinBefore = akuarium.getKoin();
+
         akuarium.BeliGuppy();
+
+        int koinAfter = akuarium.getKoin();
+
+        assertEquals(koinBefore - 50, koinAfter);
 
         LinkedList<Ikan> ikanList = akuarium.getIkanList();
 
@@ -179,7 +185,13 @@ public class AkuariumTest {
         TestUtility testUtil = new TestUtility();
         Akuarium akuarium = testUtil.generatePopulatedAkuarium();
 
+        int koinBefore = akuarium.getKoin();
+
         akuarium.BeliPiranha();
+
+        int koinAfter = akuarium.getKoin();
+
+        assertEquals(koinBefore - 100, koinAfter);
 
         LinkedList<Ikan> ikanList = akuarium.getIkanList();
 
@@ -206,7 +218,13 @@ public class AkuariumTest {
         TestUtility testUtil = new TestUtility();
         Akuarium akuarium = testUtil.generatePopulatedAkuarium();
 
+        int koinBefore = akuarium.getKoin();
+
         akuarium.BeliMakanan(0, 0);
+
+        int koinAfter = akuarium.getKoin();
+
+        assertEquals(koinBefore - 5, koinAfter);
 
         assertEquals(testUtil.expectedNumberOfMakananIkan + 1, akuarium.getMakananIkanList().getSize());
     }

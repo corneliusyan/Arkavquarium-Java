@@ -4,9 +4,12 @@ import static org.junit.Assert.*;
 
 public class LinkedListTest {
 
-    public LinkedList<Integer> generatePopulatedLinkedList() {
+    @Test
+    public void getHead() {
         LinkedList<Integer> list = new LinkedList<Integer>();
-        return list;
+        list.add(8);
+        assertNotNull(list.getHead());
+        assertEquals((Integer)(8), list.getHead().getData());
     }
 
     @Test
@@ -34,14 +37,6 @@ public class LinkedListTest {
         list.add(10);
         int idx = list.find(9);
         assertEquals(1, idx);
-    }
-
-    @Test
-    public void getHead() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        list.add(8);
-        assertNotNull(list.getHead());
-        assertEquals((Integer)(8), list.getHead().getData());
     }
 
     @Test
